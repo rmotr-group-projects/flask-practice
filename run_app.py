@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -24,6 +24,19 @@ def build_username():
 
         i.e: username for "Elon Musk" would be "emusk"
     """
+    pass
+
+@app.route('/user')
+def search_user():
+    """
+        Implement a view that receives a '?search=' query parameter in the URL,
+        and returns the amount of users in the given users_list that contains
+        that search string in their names.
+        i.e: /user?search=mo will return 'Found 2 users that match with search "mo"'
+    """
+    # HINT: to access the query params you'll need to use request.args.get()
+    # function imported from flask
+    users = ['Jack', 'Morgan', 'Moe', 'Steve']
     pass
 
 
