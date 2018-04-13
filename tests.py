@@ -19,3 +19,7 @@ class FlaskPracticeTestCase(unittest.TestCase):
     def test_3_build_username(self):
         response = self.client.get('/username/Elon/Musk')
         assert (response.data) == b'emusk'
+
+    def test_4_search_user(self):
+        response = self.client.get('/user?search=mo')
+        assert (response.data) == b'Found 2 users that match with search: "mo"'

@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
@@ -27,6 +28,21 @@ def build_username(first_name, last_name):
     """
     username = '{}{}'.format(first_name[0], last_name)
     return username.lower()
+
+@app.route('/user')
+def search_user():
+    """
+        Implement a view that receives a '?search=' query parameter in the URL,
+        and returns the amount of users in the given users_list that contains
+        that search string in their names.
+
+        i.e: /user?search=mo will return 'Found 2 users that match with search "mo"'
+    """
+    users = ['Jack', 'Morgan', 'Moe', 'Steve']
+    search = request.args.get('search')
+    filtered_users = [user for user in users if search.lower() in user.lower()]
+    return 'Found {} users that match with search: "{}"'.format(
+        len(filtered_users), search)
 
 
 if __name__ == '__main__':
