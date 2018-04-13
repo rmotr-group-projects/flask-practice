@@ -45,3 +45,9 @@ i.e: Sending `/sum/100/200`, the response would be: `"The sum of 100 and 200 is:
 In this case, you'll have to implement a view that receives user's first name and last name, and builds its lowercase username using first letter of the first name, concatenated with the last name. (Remember to validate that given parameters are strings)
 
 i.e: Sending `/username/Elon/Musk` will return `emusk`
+
+### 4. Implement a view with query parameters
+
+For this exercise, you'll have to implement a view that receives a `?search=` query parameter in the URL, and returns the amount of users in the given users_list that contains that search string in their names.
+
+i.e: `/user?search=mo` will return `'Found 2 users that match with search "mo"'`
