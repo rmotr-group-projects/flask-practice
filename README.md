@@ -32,16 +32,16 @@ Tests are split among several functions. You can run them all together doing `py
 
 ### 1. Implement a simple Welcome view
 
-This view was done for you as an example. Just implemented a basic view on '/' URL that returns a string welcoming to your Flask practice
+This view was done for you as an example. Just implemented a basic view on `/` URL that returns a string welcoming to your Flask practice
 
 ### 2. Implement a view that receives URL parameters
 
 This one was also done as an example. In this case, the view receives two numbers as URL parameters, and returns the sum of them in a formatted string.
 
-i.e: Sending /sum/100/200, the response would be: "The sum of 100 and 200 is: 300"
+i.e: Sending `/sum/100/200`, the response would be: `"The sum of 100 and 200 is: 300"`
 
 ### 3. Implement a view that builds usernames
 
 In this case, you'll have to implement a view that receives user's first name and last name, and builds its lowercase username using first letter of the first name, concatenated with the last name. (Remember to validate that given parameters are strings)
 
-i.e: Sending /username/Elon/Musk will return "emusk"
+i.e: Sending `/username/Elon/Musk` will return `emusk`
