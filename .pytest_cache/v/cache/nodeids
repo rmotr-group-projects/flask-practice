@@ -1,0 +1,6 @@
+[
+  "tests.py::FlaskPracticeTestCase::test_1_welcome_view",
+  "tests.py::FlaskPracticeTestCase::test_2_sum_two_numbers",
+  "tests.py::FlaskPracticeTestCase::test_3_build_username",
+  "tests.py::FlaskPracticeTestCase::test_4_search_user"
+]
