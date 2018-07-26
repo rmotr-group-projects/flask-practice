@@ -15,7 +15,7 @@ def sum_of_two_numbers(first_number, second_number):
     total = first_number + second_number
     return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
 
-@app.route('/username/<first_name>/<last_name>')
+@app.route('/username/<str:first_name>/<str:last_name>')
 def build_username(first_name, last_name):
     """
         Implement a view that receives user's first name and last name,
@@ -24,7 +24,7 @@ def build_username(first_name, last_name):
 
         i.e: username for "Elon Musk" would be "emusk"
     """
-    return str(first_name[0].lower()) + str(last_name.lower())
+    return first_name[0].lower() + last_name.lower()
 
 @app.route('/user')
 def search_user():
