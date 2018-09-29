@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def welcome_view():
+    
     return 'Welcome to our Flask Practice!'
 
 
@@ -28,6 +29,7 @@ def build_username(first_name, last_name):
     """
     
     username = '{}{}'.format(first_name[0], last_name)
+    
     return username.lower()
     
 
@@ -39,13 +41,13 @@ def search_user():
         that search string in their names.
         i.e: /user?search=mo will return 'Found 2 users that match with search "mo"'
     """
-    # HINT: to access the query params you'll need to use request.args.get()
-    # function imported from flask
     
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
     search = request.args.get('search')
     query_users = [user for user in users if search.lower() in user.lower()]
-    return 'Found {} users that match with search: "{}"'.format(len(query_users), search)
+    
+    return 'Found {} users that match with search: "{}"'.format(
+                                                    len(query_users), search)
 
 
 if __name__ == '__main__':
