@@ -15,16 +15,11 @@ def sum_of_two_numbers(first_number, second_number):
     total = first_number + second_number
     return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
 
-
-def build_username():
-    """
-        Implement a view that receives user's first name and last name,
-        and returns its username built with first letter of the first name,
-        concatenated with the last name.
-
-        i.e: username for "Elon Musk" would be "emusk"
-    """
-    pass
+@app.route('/username/<path:name>')
+def build_username(name):
+    first_name, second_name = name.split("/")
+    return first_name[0].lower() + second_name.lower()
+    
 
 @app.route('/user')
 def search_user():
@@ -34,10 +29,15 @@ def search_user():
         that search string in their names.
         i.e: /user?search=mo will return 'Found 2 users that match with search "mo"'
     """
+    search_term = request.args.get('search')
     # HINT: to access the query params you'll need to use request.args.get()
     # function imported from flask
+    
+
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
-    pass
+    found_list = [name for name in users if search_term in name.lower()]
+
+    return "Found {number} users that match with search: \"{search_term}\"".format(search_term=search_term,number=(len(found_list)))
 
 
 if __name__ == '__main__':
