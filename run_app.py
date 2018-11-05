@@ -11,7 +11,6 @@ def welcome_view():
 
 @app.route('/sum/<int:first_number>/<int:second_number>')
 def sum_of_two_numbers(first_number, second_number):
-    """Implement a view that receives two numbers and returns the sum of them"""
     total = first_number + second_number
     return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
 
