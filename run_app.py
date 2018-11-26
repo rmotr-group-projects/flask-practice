@@ -40,7 +40,7 @@ def search_user():
     query = request.args.get('search')
     results = [person for person in users if query in person.lower()]
     
-    return 'Found {} users that match with search "{}"'.format(len(results), query)
+    return 'Found {} users that match with search: "{}"'.format(len(results), query)
 
 if __name__ == '__main__':
     app.debug = True
