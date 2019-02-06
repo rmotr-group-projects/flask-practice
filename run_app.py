@@ -15,8 +15,9 @@ def sum_of_two_numbers(first_number, second_number):
     total = first_number + second_number
     return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
 
-
-def build_username():
+# troy:  self created
+@app.route('/username/<string:first>/<string:last>')
+def build_username(first,last):
     """
         Implement a view that receives user's first name and last name,
         and returns its username built with first letter of the first name,
@@ -24,7 +25,7 @@ def build_username():
 
         i.e: username for "Elon Musk" would be "emusk"
     """
-    pass
+    return '{}{}'.format(first[0].lower(),last.lower())
 
 @app.route('/user')
 def search_user():
@@ -37,7 +38,14 @@ def search_user():
     # HINT: to access the query params you'll need to use request.args.get()
     # function imported from flask
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
-    pass
+    
+    search = request.args.get('search') # ?Search=
+    
+    #return user that matches search
+    filtered_users = [user for user in users if search.lower() in user.lower()]
+    
+    #     b'Found 2 users that match with search: "mo"'
+    return 'Found {} users that match with search: "{}"'.format(len(filtered_users), search)
 
 
 if __name__ == '__main__':
@@ -45,3 +53,16 @@ if __name__ == '__main__':
     host = os.environ.get('IP', '0.0.0.0')
     port = int(os.environ.get('PORT', 8080))
     app.run(host=host, port=port)
+
+    
+    
+    
+    ### main page
+    # Welcome to our Flask Practice!
+    
+    ### sum
+    # https://i4-p38904.proxy.rmotr.com/sum/150/250
+    # The sum of 150 and 250 is: 400
+    
+    #response = self.client.get('/username/Elon/Musk')
+    #    assert (response.data) == b'emusk'
