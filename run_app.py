@@ -31,7 +31,7 @@ def build_username(first_name, last_name):
         return "Invalid Input" 
 
 @app.route('/user')
-def search_user():
+def search_user(user):
     """
         Implement a view that receives a '?search=' query parameter in the URL,
         and returns the amount of users in the given users_list that contains
@@ -41,7 +41,13 @@ def search_user():
     # HINT: to access the query params you'll need to use request.args.get()
     # function imported from flask
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
-    pass
+    param = request.args.get(user)
+    count = 0
+    for one in users:
+        if param in one:
+            count += 1 
+    
+    return 'Found {} users that match with the search {}'.format(count, param) 
 
 
 if __name__ == '__main__':
