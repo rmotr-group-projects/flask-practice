@@ -24,7 +24,8 @@ def build_username():
 
         i.e: username for "Elon Musk" would be "emusk"
     """
-    pass
+    username = '{}{}'.format(first_name[0], last_name)
+    return username.lower()
 
 @app.route('/user')
 def search_user():
@@ -37,7 +38,9 @@ def search_user():
     # HINT: to access the query params you'll need to use request.args.get()
     # function imported from flask
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
-    pass
+    search = request.args.get('search')
+    search_result = [user for user in users if search.lower() in user.lower()]
+    return 'Found {} users that match with search: "{}"'.format(len(search_result), search)
 
 
 if __name__ == '__main__':
