@@ -25,7 +25,7 @@ def build_username(first_name, last_name):
         i.e: username for "Elon Musk" would be "emusk"
     """
     if not isinstance(first_name, str) or not isinstance(last_name, str):
-        raise ValueError
+        raise TypeError
     username = first_name[:1].lower() 
     username += last_name.lower()
     return "{}".format(username)
