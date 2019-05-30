@@ -11,12 +11,13 @@ def welcome_view():
 
 @app.route('/sum/<int:first_number>/<int:second_number>')
 def sum_of_two_numbers(first_number, second_number):
-    """Implement a view that receives two numbers and returns the sum of them"""
-    total = first_number + second_number
-    return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
+        """Implement a view that receives two numbers and returns the sum of them"""
+        total = first_number + second_number
+        return 'The sum of {} and {} is: {}'.format(first_number, second_number, total)
 
 
-def build_username():
+@app.route('/username/<string:first_name>/<string:last_name>')
+def build_username(first_name, last_name):
     """
         Implement a view that receives user's first name and last name,
         and returns its username built with first letter of the first name,
@@ -24,7 +25,10 @@ def build_username():
 
         i.e: username for "Elon Musk" would be "emusk"
     """
-    pass
+    
+    username = '{}{}'.format(first_name[0], last_name)
+    return username.lower()
+     
 
 @app.route('/user')
 def search_user():
@@ -36,8 +40,13 @@ def search_user():
     """
     # HINT: to access the query params you'll need to use request.args.get()
     # function imported from flask
+    
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
-    pass
+    search = request.args.get('search')
+    filtered_users = [user for user in users if search.lower() in user.lower()]
+    return 'Found {} users that match with search: "{}"'.format(
+        len(filtered_users), search)
+
 
 
 if __name__ == '__main__':
