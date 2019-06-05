@@ -23,8 +23,8 @@ def build_username(first_name, last_name):
     return str(first+second)
 
 
-@app.route('/user?search=<param>')
-def search_user(param):
+@app.route('/user')
+def search_user():
 
 #     """
 #         Implement a view that receives a '?search=' query parameter in the URL,
@@ -34,13 +34,13 @@ def search_user(param):
 #     """
 #     # HINT: to access the query params you'll need to use request.args.get()
 #     # function imported from flask
-    request.args.get()
+    search = request.args.get('search')
     users = ['Jack', 'Morgan', 'Moe', 'Steve']
     number = 0
     for user in users:
-        if param in user:
+        if search.lower() in user.lower():
             number+=1
-    return 'Found {} users that match with search "{}"'.format(number, param)
+    return 'Found {} users that match with search: "{}"'.format(number, search)
 
 
 if __name__ == '__main__':
