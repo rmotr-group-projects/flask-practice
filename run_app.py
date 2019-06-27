@@ -41,7 +41,8 @@ def search_user():
     search = request.args.get('search')
     lower_user = [name.lower()[:len(search)] for name in users]
     amount = [abb for abb in lower_user if search in abb]
-    test = f'Found {len(amount)} users that match with search: "{search}"'
+    amount_length = len(amount)
+    test = 'Found {} users that match with search: "{}"'.format(amount_length, search)
     return test
 
 
